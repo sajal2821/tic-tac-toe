@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tic tac toe</title>
+
+    <script>
+        let arr = ["", "", "", "", "", "", "", "", ""];
+        let xcount = 0;
+        let ocount = 0;
+
+        function randval() {
+            return (Math.floor(Math.random(arr.length - 1) * 10));
+        }
+
+        function score() {
+
+            //            alert(); || arr[0]==arr[4]==arr[8]=="X" || arr[6]==arr[4]==arr[2]=="X" || arr[1]==arr[4]==arr[8]=="X" || arr[2]==arr[5]==arr[8]=="X" || arr[0]==arr[1]==arr[2]=="X" || arr[3]==arr[4]==arr[5]=="X" || arr[6]==arr[7]==arr[8]=="X" 
+            if (arr[0] == "X" && arr[3] == "X" && arr[6] == "X" || arr[0] == "X" && arr[4] == "X" && arr[8] == "X" ||
+                arr[6] == "X" && arr[4] == "X" && arr[2] == "X" ||
+                arr[1] == "X" && arr[4] == "X" && arr[7] == "X" ||
+                arr[2] == "X" && arr[5] == "X" && arr[8] == "X" ||
+                arr[0] == "X" && arr[1] == "X" && arr[2] == "X" ||
+                arr[3] == "X" && arr[4] == "X" && arr[5] == "X" ||
+                arr[6] == "X" && arr[7] == "X" && arr[8] == "X") {
+                document.getElementById("winner").innerHTML = "X Wins";
+//                $(".lines").attr('disabled','disabled');
+               for(var i=0;i<9;i++)
+                   {
+                       document. getElementById(i). style. pointerEvents = 'none';
+                   }
+                 
+                   
+                xcount = xcount + 1;
+                //                alert(xcount);
+                document.getElementById("xwin").innerHTML = "X=" + xcount;
+              
+                //                     reset();
+            } else
+                ///////////////
+                if (arr[0] == "O" && arr[3] == "O" && arr[6] == "O" || arr[0] == "O" && arr[4] == "O" && arr[8] == "O" ||
+                    arr[6] == "O" && arr[4] == "O" && arr[2] == "O" ||
+                    arr[1] == "O" && arr[4] == "O" && arr[7] == "O" ||
+                    arr[2] == "O" && arr[5] == "O" && arr[8] == "O" ||
+                    arr[0] == "O" && arr[1] == "O" && arr[2] == "O" ||
+                    arr[3] == "O" && arr[4] == "O" && arr[5] == "O" ||
+                    arr[6] == "O" && arr[7] == "O" && arr[8] == "O") {
+                    document.getElementById("winner").innerHTML = "O Wins";
+                  for(var i=0;i<9;i++)
+                   {
+                       document. getElementById(i). style. pointerEvents = 'none';
+                   }
+                    ocount = ocount + 1;
+                    document.getElementById("owin").innerHTML = "O=" + ocount;
+                    //                     reset();
+                }
+            else
+            if (arr[0] != "" &&
+                arr[1] != "" &&
+                arr[2] != "" &&
+                arr[3] != "" &&
+                arr[4] != "" &&
+                arr[5] != "" &&
+                arr[6] != "" &&
+                arr[7] != "" &&
+                arr[8] != "" &&
+                (document.getElementById("winner").innerHTML != "O Wins") && (document.getElementById("winner").innerHTML = "X Wins")) {
+                document.getElementById("winner").innerHTML = "DRAW";
+            }
+
+        }
+
+        function reset() {
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                arr[i] = "";
+                document.getElementById(i).innerHTML = "";
+                document.getElementById("winner").innerHTML = "";
+            }
+            xcount = 0;
+            ocount = 0;
+            document.getElementById("owin").innerHTML = "O=" + ocount;
+            document.getElementById("xwin").innerHTML = "X=" + xcount;
+
+        }
+
+        function play() {
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                arr[i] = "";
+                document.getElementById(i).innerHTML = "";
+                document.getElementById("winner").innerHTML = "";
+                 document. getElementById(i). style. pointerEvents = 'auto';
+            }
+            vals(xyz);
+        }
+
+        function vals(xyz) {
+
+            //            alert(xyz);
+
+            //            alert(arr[8]);
+
+            if (arr[xyz] == "") {
+                document.getElementById(xyz).innerHTML = "X";
+                arr[xyz] = document.getElementById(xyz).innerHTML;
+                //             alert(arr);
+                let oplace = randval();
+                if(arr[4]=="X")
+                if(oplace==1 || oplace ==3 || oplace==5 || oplace==7)
+                    {
+//                        alert();
+//                        oplace=randval();
+                        oplace = oplace-1;
+                    }
+                //            let oplace = Math.floor(Math.random(arr.length-1)*10);
+                //            alert(oplace);
+                qqq(oplace);
+                //////////////////////
+                function qqq(oplace) {
+                    //            alert();
+
+                    ///////////ocases
+                    if (arr[0] == "O" && arr[3] == "O" && arr[6] == "") {
+                        document.getElementById(6).innerHTML = "O";
+                        arr[6] = document.getElementById(6).innerHTML;
+                        //   1                             alert(arr);
+                    } else
+                    if (arr[1] == "O" && arr[4] == "O" && arr[7] == "") {
+                        document.getElementById(7).innerHTML = "O";
+                        arr[7] = document.getElementById(7).innerHTML;
+                        //   2                             alert(arr);
+                    } else
+                    if (arr[2] == "O" && arr[5] == "O" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr)3;
+                    } else
+                    if (arr[0] == "O" && arr[6] == "O" && arr[3] == "") {
+                        document.getElementById(3).innerHTML = "O";
+                        arr[3] = document.getElementById(3).innerHTML;
+                        //                                alert(arr)4;
+                    } else
+                    if (arr[1] == "O" && arr[7] == "O" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "O" && arr[8] == "O" && arr[5] == "") {
+                        document.getElementById(5).innerHTML = "O";
+                        arr[5] = document.getElementById(5).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "O" && arr[6] == "O" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "O" && arr[7] == "O" && arr[1] == "") {
+                        document.getElementById(1).innerHTML = "O";
+                        arr[1] = document.getElementById(1).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[5] == "O" && arr[8] == "O" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "O" && arr[1] == "O" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "O" && arr[4] == "O" && arr[5] == "") {
+                        document.getElementById(5).innerHTML = "O";
+                        arr[5] = document.getElementById(5).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[6] == "O" && arr[7] == "O" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "O" && arr[2] == "O" && arr[1] == "") {
+                        document.getElementById(1).innerHTML = "O";
+                        arr[1] = document.getElementById(1).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "O" && arr[5] == "O" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[6] == "O" && arr[8] == "O" && arr[7] == "") {
+                        document.getElementById(7).innerHTML = "O";
+                        arr[7] = document.getElementById(7).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[1] == "O" && arr[2] == "O" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "O" && arr[5] == "O" && arr[3] == "") {
+                        document.getElementById(3).innerHTML = "O";
+                        arr[3] = document.getElementById(3).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[7] == "O" && arr[8] == "O" && arr[6] == "") {
+                        document.getElementById(6).innerHTML = "O";
+                        arr[6] = document.getElementById(6).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "O" && arr[4] == "O" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "O" && arr[8] == "O" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "O" && arr[8] == "O" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "O" && arr[4] == "O" && arr[6] == "") {
+                        document.getElementById(6).innerHTML = "O";
+                        arr[6] = document.getElementById(6).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "O" && arr[6] == "O" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "O" && arr[6] == "O" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+
+                        ///////////x cases
+                        if (arr[0] == "X" && arr[3] == "X" && arr[6] == "") {
+                            document.getElementById(6).innerHTML = "O";
+                            arr[6] = document.getElementById(6).innerHTML;
+                            //   1                             alert(arr);
+                        } else
+                    if (arr[1] == "X" && arr[4] == "X" && arr[7] == "") {
+                        document.getElementById(7).innerHTML = "O";
+                        arr[7] = document.getElementById(7).innerHTML;
+                        //   2                             alert(arr);
+                    } else
+                    if (arr[2] == "X" && arr[5] == "X" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr)3;
+                    } else
+                    if (arr[0] == "X" && arr[6] == "X" && arr[3] == "") {
+                        document.getElementById(3).innerHTML = "O";
+                        arr[3] = document.getElementById(3).innerHTML;
+                        //                                alert(arr)4;
+                    } else
+                    if (arr[1] == "X" && arr[7] == "X" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "X" && arr[8] == "X" && arr[5] == "") {
+                        document.getElementById(5).innerHTML = "O";
+                        arr[5] = document.getElementById(5).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "X" && arr[6] == "X" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "X" && arr[7] == "X" && arr[1] == "") {
+                        document.getElementById(1).innerHTML = "O";
+                        arr[1] = document.getElementById(1).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[5] == "X" && arr[8] == "X" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "X" && arr[1] == "X" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "X" && arr[4] == "X" && arr[5] == "") {
+                        document.getElementById(5).innerHTML = "O";
+                        arr[5] = document.getElementById(5).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[6] == "X" && arr[7] == "X" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "X" && arr[2] == "X" && arr[1] == "") {
+                        document.getElementById(1).innerHTML = "O";
+                        arr[1] = document.getElementById(1).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[3] == "X" && arr[5] == "X" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[6] == "X" && arr[8] == "X" && arr[7] == "") {
+                        document.getElementById(7).innerHTML = "O";
+                        arr[7] = document.getElementById(7).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[1] == "X" && arr[2] == "X" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "X" && arr[5] == "X" && arr[3] == "") {
+                        document.getElementById(3).innerHTML = "O";
+                        arr[3] = document.getElementById(3).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[7] == "X" && arr[8] == "X" && arr[6] == "") {
+                        document.getElementById(6).innerHTML = "O";
+                        arr[6] = document.getElementById(6).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "X" && arr[4] == "X" && arr[8] == "") {
+                        document.getElementById(8).innerHTML = "O";
+                        arr[8] = document.getElementById(8).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[0] == "X" && arr[8] == "X" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "X" && arr[8] == "X" && arr[0] == "") {
+                        document.getElementById(0).innerHTML = "O";
+                        arr[0] = document.getElementById(0).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "X" && arr[4] == "X" && arr[6] == "") {
+                        document.getElementById(6).innerHTML = "O";
+                        arr[6] = document.getElementById(6).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[2] == "X" && arr[6] == "X" && arr[4] == "") {
+                        document.getElementById(4).innerHTML = "O";
+                        arr[4] = document.getElementById(4).innerHTML;
+                        //                                alert(arr);
+                    } else
+                    if (arr[4] == "X" && arr[6] == "X" && arr[2] == "") {
+                        document.getElementById(2).innerHTML = "O";
+                        arr[2] = document.getElementById(2).innerHTML;
+                        //                                alert(arr);
+                    } else
+
+
+                        ///////
+                        if (arr[oplace] == "") {
+                            document.getElementById(oplace).innerHTML = "O";
+                            arr[oplace] = document.getElementById(oplace).innerHTML;
+                        }
+
+                    ///////////
+
+                    //                    || arr[0]=="X"&&arr[6]=="X"&&arr[3]=="" || arr[0]=="X"&&arr[4]=="X"&&arr[8]=="" || arr[0]=="X"&&arr[1]=="X"&&arr[2]=="" || arr[0]=="X"&&arr[2]=="X"&&arr[1]=="" ||
+                    //                          arr[0]=="X"&&arr[8]=="X"&&arr[4]==""
+
+
+                    ////
+                    else
+                    if (arr[0] == "" || arr[1] == "" || arr[2] == "" || arr[3] == "" || arr[4] == "" || arr[5] == "" || arr[6] == "" || arr[7] == "" || arr[8] == "") {
+                        oplace = randval();
+                        qqq(oplace);
+                    }
+
+                }
+                ///////////////
+                score();
+               
+                       
+                   
+
+
+            }
+        }
+
+    </script>
+
+    <style>
+        .abc>.lines1>.lines {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            float: left;
+            font-size: 90px;
+            text-align: center;
+
+
+        }
+
+        .abc .lines1 .lines:hover {
+            cursor: pointer;
+            background-color: lightyellow;
+        }
+
+        .abc .lines1 {
+            width: 100px;
+
+        }
+
+        .abc {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        #winner {
+            display: flex;
+            justify-content: center;
+            font-family: sans-serif;
+            font-size: 50px;
+            margin: 50px;
+            color: red;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            font-family: sans-serif;
+            font-size: 20px;
+            margin: 50px;
+            color: white;
+            float: left;
+            background-color: blue;
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+
+        .btn:hover {
+            /*            color: black;*/
+            background-color: green;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: scale(-3);
+            transition: ease all 6s;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .qw {
+            float: left;
+            margin: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            font-size: 40px;
+            color: darkorange;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="display: flex;justify-content: center;font-size: 50px;color: burlywood">
+        Tic-Tac-Toe
+    </div>
+    <div class="abc">
+        <div class="lines1">
+            <div class="lines" id="0" value="0" onclick="vals(0)"></div>
+            <div class="lines" id="1" value="1" onclick="vals(1)"></div>
+            <div class="lines" id="2" value="2" onclick="vals(2)"></div>
+        </div>
+        <div class="lines1">
+            <div class="lines" id="3" value="3" onclick="vals(3)"></div>
+            <div class="lines" id="4" value="4" onclick="vals(4)"></div>
+            <div class="lines" id="5" value="5" onclick="vals(5)"></div>
+        </div>
+        <div class="lines1">
+            <div class="lines" id="6" value="6" onclick="vals(6)"></div>
+            <div class="lines" id="7" value="7" onclick="vals(7)"></div>
+            <div class="lines" id="8" value="8" onclick="vals(8)"></div>
+        </div>
+    </div>
+    <div id="winner"></div>
+    <div class="container">
+        <div class="form-row">
+            <div class="qw" id="xwin">X=0</div>
+            <div class="qw" id="owin">O=0</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-row">
+            <div class="btn col-md-6" id="reset" onclick="reset()">RESET</div>
+            <div class="btn col-md-6" id="play" onclick="play()">PLAY</div>
+        </div>
+    </div>
+</body>
+
+</html>
